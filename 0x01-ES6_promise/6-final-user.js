@@ -6,5 +6,5 @@ export default async (firstName, lastName, fileName) => Promise.allSettled([
   .then((values) => values.map((value) => (
     {
       status: value.status,
-      value: value.status === 'fulfilled' ? value.value : value.reason,
+      value: value.status === 'fulfilled' ? value.value : String(value.reason),
     })));
