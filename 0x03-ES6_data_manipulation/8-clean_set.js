@@ -1,8 +1,8 @@
-export default function (set, value) {
+export default function (set, startString) {
   if (
-    (!set && !value && !(set instanceof Set) && typeof value !== 'string') || value === ''
+    (!set && !startString && !(set instanceof Set) && typeof startString !== 'string') || startString === ''
   ) {
     return '';
   }
-  return Array.from(set).filter((val) => val.startsWith(value)).map((val) => val.slice(value.length)).join('-');
+  return Array.from(set).filter((val) => val.startsWith(startString)).map((val) => val.slice(startString.length)).join('-');
 }
