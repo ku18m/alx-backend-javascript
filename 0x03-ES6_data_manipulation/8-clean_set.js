@@ -1,6 +1,6 @@
 export default function (set, startString) {
   if (
-    (!set && !startString && !(set instanceof Set) && typeof startString !== 'string') || startString === ''
+    (!set && !startString && !(set instanceof Set) && typeof startString !== 'string' && set.values().every((setVal) => typeof setVal !== 'string')) || startString === ''
   ) {
     return '';
   }
