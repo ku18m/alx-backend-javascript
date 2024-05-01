@@ -1,8 +1,20 @@
 export default function (set, startString) {
   if (
-    (!set && !startString && !(set instanceof Set) && typeof startString !== 'string' && set.values().every((setVal) => typeof setVal !== 'string')) || startString === ''
+    !set && !startString && !(set instanceof Set) && typeof startString !== 'string'
   ) {
     return '';
   }
-  return Array.from(set).filter((val) => val.startsWith(startString)).map((val) => val.slice(startString.length)).join('-');
+
+  const suffixStrs = [];
+
+  for (const value of set.values()) {
+    if (typeof value === 'string' && value.startsWith(startString)) {
+      const suffix = value.substring(startString.length);
+
+      if (suffix && suffix !== value) {
+        suffixStrs.push(suffix);
+      }
+    }
+  }
+  return suffixStrs.join('-');
 }
